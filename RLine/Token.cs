@@ -1,23 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RLine
+﻿namespace Rline
 {
     public class Token
     {
         TokenType mType;
-        string mText;
+        string mLexeme;
         int mLine;
+        object mLiteral;
 
-        public Token(TokenType type,string text,int line)
+        public Token(TokenType type,string lexeme, object literal,int line)
         {
             mType = type;
-            mText = text;
+            mLexeme = lexeme;
             mLine = line;
+            mLiteral = literal;
         }
 
+        public override string ToString()
+        {
+            return mType + " " + mLexeme + " " + mLiteral;
+        }
+
+        public int Line { get { return mLine; } }
+
+        public object Literal { get { return mLiteral; } }
+
+        public string Lexeme { get { return mLexeme; } }
+
+        public TokenType Type { get { return mType; } }
     }
 }
